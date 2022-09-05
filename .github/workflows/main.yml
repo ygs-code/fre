@@ -1,0 +1,19 @@
+
+name: main
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: test
+        run: yarn && yarn test && yarn report
+      - name: report
+        uses: codecov/codecov-action@v1
+        with:
+          file: .nyc_output/coverage-pw.json
+        env:
+          CI: true

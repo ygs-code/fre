@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            .lsft-box {
+                float: left;
+                width: 48%;
+                height: 100vh;
+            }
+            .right-box {
+                float: right;
+                width: 48%;
+                height: 100vh;
+            }
+            * {
+                padding: 0;
+                margin: 0;
+            }
+            .textarea {
+                font-size: 18px;
+                display: block;
+                /* width: 100%;
+        height: 100vh; */
+            }
+        </style>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="./common/js/browser.5.8.38.js"></script>
+        <script src="./dist/fre.umd.js"></script>
+    </head>
+    <body>
+        <div id="root" class="lsft-box"></div>
+        <textarea id="textarea" class="textarea right-box"></textarea>
+        <script type="text/babel">
+            const { useState, render } = fre;
+
+            function App() {
+                const [count, setCount] = useState(0);
+                console.log(111);
+                const update = () => {
+                    // for (let i = 0; i <= 10; i++) {
+                    setCount(count + 1);
+                    // }
+                };
+                return (
+                    <div>
+                        <h1>{count}</h1>
+                        <button onClick={update}>+</button>
+                    </div>
+                );
+            }
+
+            // const root = createRoot(document.getElementById("app"))
+
+            // root.render(<App />)
+
+            window.onload = function () {
+                /** @jsx fre.createElement */
+                render(<App />, document.getElementById('root'));
+            };
+        </script>
+        <script>
+            var oTextarea = document.getElementById('textarea');
+            setTimeout(() => {
+                oTextarea.value = code;
+                // var oldCode = window.localStorage.getItem('code');
+                // // 如果同样代码 则不会在发送请求
+                // if (oldCode === code) {
+                //     return false;
+                // }
+                // window.localStorage.setItem('code', code);
+                // //把代码发送到服务器
+                // ajax({
+                //     url: 'http://127.0.0.1:5000/createCode',
+                //     type: 'post',
+                //     data: {
+                //         path: '/es5_code/es5_react_code/04/04_01.js',
+                //         code: code,
+                //     },
+                //     dataType: 'json',
+                //     timeout: 10000,
+                //     contentType: 'application/json',
+                //     success: function (data) {
+                //         console.log('data====', data);
+                //     },
+                //     //异常处理
+                //     error: function (e) {
+                //         console.log(e);
+                //     },
+                // });
+            }, 100);
+        </script>
+    </body>
+</html>
